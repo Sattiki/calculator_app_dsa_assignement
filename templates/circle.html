@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+	<h1>Circle Calculator</h1>
+    <form method="post">
+        <input type="number" name="radius" placeholder="Enter the radius" step="any" required="required" 
+               value="{{ radius if radius is defined else '' }}" />
+
+        <label for="operation">Operation</label>
+        <select id="operation" name="operation">
+            <option value="perimeter" {% if selected_operation == 'perimeter' %}selected{% endif %}>Perimeter</option>
+            <option value="area" {% if selected_operation == 'area' %}selected{% endif %}>Area</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    <br>
+
+    {% if printed_result %}
+        <h3>Result: {{ printed_result }}</h3>
+    {% endif %}
+{% endblock %}
